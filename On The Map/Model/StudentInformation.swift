@@ -18,7 +18,7 @@ struct StudentInformation: Codable {
     let uniqueKey: String
     let objectId: String
     let createdAt: String
-    let udpatedAt: String
+    let updatedAt: String
 }
 
 
