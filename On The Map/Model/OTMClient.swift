@@ -10,15 +10,22 @@ import Foundation
 
 class OTMClient {
     
+    struct Auth {
+        static var sessionId = ""
+    }
+    
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
         
         case getStudentLocations(Int)
+        case login
         
         var stringValue: String {
             switch self {
             case .getStudentLocations(let limit):
                 return Endpoints.base + "/StudentLocation?order=-updatedAt&limit=\(limit)"
+            case .login:
+                return Endpoints.base + "/session"
             }
         }
         
@@ -53,6 +60,7 @@ class OTMClient {
         return task
     }
     
+    
     class func getStudentList(numStudents limit: Int, completion: @escaping ([StudentInformation], Error?) -> Void) {
         _ = taskForGETRequest(url: Endpoints.getStudentLocations(limit).url, responseType: StudentResults.self) { response, error in
             if let response = response {
@@ -61,6 +69,43 @@ class OTMClient {
                 completion([], error)
             }
         }
+    }
+    
+    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        let body = LoginRequest(udacity: LoginRequest.LoginCredentials(username: username, password: password))
+        
+        var request = URLRequest(url: Endpoints.login.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try! JSONEncoder().encode(body)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+                return
+            }
+            let newData = data.subdata(in: 5..<data.count)
+            let decoder = JSONDecoder()
+            do {
+                let loginResponse = try decoder.decode(LoginResponse.self, from: newData)
+                Auth.sessionId = loginResponse.session.id
+                print(Auth.sessionId)
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
+            } catch {
+                print(error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+            }
+            
+        }
+        task.resume()
+        
+
     }
     
 }

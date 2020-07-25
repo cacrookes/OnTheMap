@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3312C91724CBEE5900728946 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3312C91624CBEE5900728946 /* LoginRequest.swift */; };
+		3312C91924CBF17D00728946 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3312C91824CBF17D00728946 /* LoginResponse.swift */; };
 		33A6125F24CA2B5800BEE9EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A6125E24CA2B5800BEE9EA /* AppDelegate.swift */; };
 		33A6126124CA2B5800BEE9EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A6126024CA2B5800BEE9EA /* SceneDelegate.swift */; };
 		33A6126324CA2B5800BEE9EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A6126224CA2B5800BEE9EA /* LoginViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3312C91624CBEE5900728946 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		3312C91824CBF17D00728946 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		33A6125B24CA2B5800BEE9EA /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A6125E24CA2B5800BEE9EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33A6126024CA2B5800BEE9EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				33D5D8AD24CA755F00ADB881 /* OTMClient.swift */,
 				33D5D8B124CA7A6F00ADB881 /* StudentModel.swift */,
 				33D5D8B324CA811400ADB881 /* StudentResults.swift */,
+				3312C91624CBEE5900728946 /* LoginRequest.swift */,
+				3312C91824CBF17D00728946 /* LoginResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +191,7 @@
 			files = (
 				33D5D8B424CA811400ADB881 /* StudentResults.swift in Sources */,
 				33D695A924CBB0C5003CA6AB /* StudentMapViewController.swift in Sources */,
+				3312C91924CBF17D00728946 /* LoginResponse.swift in Sources */,
 				33D5D8B224CA7A6F00ADB881 /* StudentModel.swift in Sources */,
 				33D5D8AC24CA6EB300ADB881 /* StudentInformation.swift in Sources */,
 				33A6126324CA2B5800BEE9EA /* LoginViewController.swift in Sources */,
@@ -193,6 +200,7 @@
 				33D5D8B024CA790D00ADB881 /* StudentListViewController.swift in Sources */,
 				33D695AD24CBC0CD003CA6AB /* StudentLocation.swift in Sources */,
 				33A6126124CA2B5800BEE9EA /* SceneDelegate.swift in Sources */,
+				3312C91724CBEE5900728946 /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

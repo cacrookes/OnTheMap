@@ -18,15 +18,44 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func loginPressed(_ sender: Any) {
+        let username: String = emailTextField.text ?? ""
+        let password: String = passwordTextField.text ?? ""
+        _ = OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:))
     }
     
     
     @IBAction func signupPressed(_ sender: Any) {
+        // redirect the user to the sign up page on Udacity's website.
+        if let signupURL = URL(string: "https://auth.udacity.com/sign-up") {
+            UIApplication.shared.open(signupURL)
+        }
     }
     
+    /// Sets the app to busy mode. Enables activityIndicator and disables buttons and text fields
+    ///
+    /// - Parameter isBusy: a boolean indicating if the app is busy or not.
+    func setIsBusy(_ isBusy: Bool) {
+        if isBusy {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        emailTextField.isEnabled = !isBusy
+        passwordTextField.isEnabled = !isBusy
+        loginButton.isEnabled = !isBusy
+        signupButton.isEnabled = !isBusy
+    }
+    
+    func handleLoginResponse(success: Bool, error: Error?) {
+        setIsBusy(false)
+        if success {
+            //performSegue(withIdentifier: "completeLogin", sender: nil)
+        } else {
+            //showLoginFailure(message: error?.localizedDescription ?? "")
+        }
+    }
 }
 
