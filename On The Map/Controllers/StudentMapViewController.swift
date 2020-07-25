@@ -41,7 +41,6 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView
     
         if pinView == nil {
-            print("hello")
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
             pinView?.canShowCallout = true
             pinView?.pinTintColor = .blue
