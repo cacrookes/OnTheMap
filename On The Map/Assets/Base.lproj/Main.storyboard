@@ -92,6 +92,7 @@
                         <outlet property="loginButton" destination="ccl-ki-0lX" id="iVY-wk-Nj2"/>
                         <outlet property="passwordTextField" destination="Uf7-Bj-Re9" id="qM9-iw-MCJ"/>
                         <outlet property="signupButton" destination="tdG-Ws-Uvh" id="mxe-fu-CjD"/>
+                        <segue destination="wuh-PH-VVV" kind="presentation" identifier="completeLogin" modalPresentationStyle="fullScreen" id="WF6-UR-DBp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -217,6 +218,7 @@
         <scene sceneID="ElC-WI-mNH">
             <objects>
                 <tabBarController id="wuh-PH-VVV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="cwL-J4-L54"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VZs-kf-VGn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

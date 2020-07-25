@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
     func handleLoginResponse(success: Bool, error: Error?) {
         setIsBusy(false)
         if success {
-            //performSegue(withIdentifier: "completeLogin", sender: nil)
+            performSegue(withIdentifier: "completeLogin", sender: nil)
         } else {
             //showLoginFailure(message: error?.localizedDescription ?? "")
         }
