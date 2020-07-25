@@ -101,13 +101,16 @@
         <!--On the Map-->
         <scene sceneID="PAf-yA-368">
             <objects>
-                <viewController id="auM-1h-kW6" sceneMemberID="viewController">
+                <viewController id="auM-1h-kW6" customClass="StudentMapViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jzr-cC-piJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lvr-bM-Vdp">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <connections>
+                                    <outlet property="delegate" destination="auM-1h-kW6" id="bYO-gM-H4T"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -126,6 +129,9 @@
                             <barButtonItem title="Item" image="icon_refresh" id="2Hu-oK-l3j"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="Lvr-bM-Vdp" id="fuk-KI-NxF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJS-Zq-QNe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
