@@ -91,7 +91,6 @@ class OTMClient {
             do {
                 let loginResponse = try decoder.decode(LoginResponse.self, from: newData)
                 Auth.sessionId = loginResponse.session.id
-                print(Auth.sessionId)
                 DispatchQueue.main.async {
                     completion(true, nil)
                 }
