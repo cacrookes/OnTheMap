@@ -245,6 +245,7 @@
                         <outlet property="findLocationButton" destination="Oo5-I1-blD" id="dkN-bY-eZt"/>
                         <outlet property="locationTextField" destination="o8o-Wv-sTK" id="b3f-zG-5Ud"/>
                         <outlet property="mediaURLTextField" destination="aZw-hc-5t0" id="qsi-zW-ife"/>
+                        <segue destination="bIV-jV-yNh" kind="show" id="diG-AS-3dv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eob-Km-T8n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -254,14 +255,44 @@
         <!--View Location-->
         <scene sceneID="4d2-cj-Mrf">
             <objects>
-                <viewController id="bIV-jV-yNh" sceneMemberID="viewController">
+                <viewController id="bIV-jV-yNh" customClass="ViewLocationViewController" customModule="On_The_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ycu-Il-tPF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jta-Po-9H8">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhS-48-PIX">
+                                <rect key="frame" x="87" y="796" width="240" height="30"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="c1h-nw-MBa"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="FINISH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishClicked:" destination="bIV-jV-yNh" eventType="touchUpInside" id="CDi-MX-D4I"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wcO-Kk-Atx" firstAttribute="bottom" secondItem="xhS-48-PIX" secondAttribute="bottom" constant="36" id="7LK-ny-Hiq"/>
+                            <constraint firstItem="wcO-Kk-Atx" firstAttribute="trailing" secondItem="jta-Po-9H8" secondAttribute="trailing" id="MpL-KF-Y2B"/>
+                            <constraint firstItem="wcO-Kk-Atx" firstAttribute="bottom" secondItem="jta-Po-9H8" secondAttribute="bottom" id="SiC-lj-0bE"/>
+                            <constraint firstItem="jta-Po-9H8" firstAttribute="leading" secondItem="wcO-Kk-Atx" secondAttribute="leading" id="T7P-KH-hPH"/>
+                            <constraint firstItem="xhS-48-PIX" firstAttribute="centerX" secondItem="Ycu-Il-tPF" secondAttribute="centerX" id="Vg3-DT-DBr"/>
+                            <constraint firstItem="jta-Po-9H8" firstAttribute="top" secondItem="wcO-Kk-Atx" secondAttribute="top" id="lR3-MU-8Y5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wcO-Kk-Atx"/>
                     </view>
                     <navigationItem key="navigationItem" title="View Location" id="I93-GF-jug"/>
+                    <connections>
+                        <outlet property="mapView" destination="jta-Po-9H8" id="BzF-sy-2F2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2U-Au-xce" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
