@@ -58,6 +58,5 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
         if let mediaURL = URL(string: StudentModel.studentList[indexPath.row].mediaURL) {
             UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
         }
-        
     }
 }
