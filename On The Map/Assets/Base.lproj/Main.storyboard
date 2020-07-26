@@ -331,7 +331,16 @@
                                     <segue destination="Qb4-Yl-PX3" kind="presentation" modalPresentationStyle="fullScreen" id="2Dr-Kk-Bvf"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="icon_refresh" id="2Hu-oK-l3j"/>
+                            <barButtonItem title="Item" style="plain" id="6Rm-ve-SEW">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YcZ-Id-2Qz">
+                                    <rect key="frame" x="273" y="10" width="78" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="icon_refresh"/>
+                                    <connections>
+                                        <action selector="refreshClicked:" destination="auM-1h-kW6" eventType="touchUpInside" id="hYd-6x-xqh"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -419,7 +428,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XPZ-Gg-Ilk"/>
+        <segue reference="2Dr-Kk-Bvf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>

@@ -22,6 +22,10 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         populateMap()
     }
     
+    @IBAction func refreshClicked(_ sender: Any) {
+        populateMap()
+    }
+    
     /// Get the 100 most recent student locations and add pins for each student on the map.
     func populateMap(){
         // load 100 most recent students in studentList array
