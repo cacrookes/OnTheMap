@@ -24,6 +24,16 @@ class ViewLocationViewController: UIViewController {
     }
     
     @IBAction func finishClicked(_ sender: Any) {
+        // Hardcoding first name and last name due to issues with the Udacity API:
+        // https://knowledge.udacity.com/questions/260011
+        let postLocation = PostLocationRequest(uniqueKey: OTMClient.Auth.userId,
+                                               firstName: "MIYAVI",
+                                               lastName: "Ishihara",
+                                               mapString: pinTitle!,
+                                               mediaURL: mediaURL!,
+                                               latitude: coordinates!.latitude,
+                                               longitude: coordinates!.longitude)
+        _ = OTMClient.postStudentLocation(studentLocation: postLocation, completion: handlePostLocationResponse(success:error:))
     }
     
     func setupMap(){
@@ -41,6 +51,15 @@ class ViewLocationViewController: UIViewController {
         let coordinateRegion = MKCoordinateRegion(center: coordinates,
                                                   latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func handlePostLocationResponse(success: Bool, error: Error?){
+        if success {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            // TODO: Handle error
+            print(error!)
+        }
     }
     
 }
