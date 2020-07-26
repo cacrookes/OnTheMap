@@ -54,4 +54,10 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let mediaURL = URL(string: StudentModel.studentList[indexPath.row].mediaURL) {
+            UIApplication.shared.open(mediaURL, options: [:], completionHandler: nil)
+        }
+        
+    }
 }
