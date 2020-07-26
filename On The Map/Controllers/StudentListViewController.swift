@@ -18,26 +18,19 @@ class StudentListViewController: UIViewController {
         studentTableView.delegate = self
         studentTableView.dataSource = self
         
-        OTMClient.getStudentList(numStudents: 100) { (students, error) in
-            StudentModel.studentList = students
-            self.studentTableView.reloadData()
-        }
     }
     
-
     override func viewWillAppear(_ animated: Bool) {
+        populateList()
         studentTableView.reloadData()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // Grabs the 100 most recent student locations and adds them to the table view.
+    func populateList(){
+        OTMClient.getStudentList(numStudents: 100) { (students, error) in
+            StudentModel.studentList = students
+        }
     }
-    */
 
 }
 
