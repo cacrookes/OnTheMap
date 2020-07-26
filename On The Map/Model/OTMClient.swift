@@ -78,7 +78,7 @@ class OTMClient {
         }
     }
     
-    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+    class func login(username: String, password: String, completion: @escaping (Bool, Error?, String?) -> Void) {
         let body = LoginRequest(udacity: LoginRequest.LoginCredentials(username: username, password: password))
         
         var request = URLRequest(url: Endpoints.login.url)
@@ -89,26 +89,33 @@ class OTMClient {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
-                    completion(false, error)
+                    completion(false, error, nil)
                 }
                 return
             }
             let newData = data.subdata(in: 5..<data.count)
+            
             let decoder = JSONDecoder()
             do {
                 let loginResponse = try decoder.decode(LoginResponse.self, from: newData)
                 Auth.sessionId = loginResponse.session.id
                 Auth.userId = loginResponse.account.key
                 DispatchQueue.main.async {
-                    completion(true, nil)
+                    completion(true, nil, nil)
                 }
             } catch {
-                print(error)
-                DispatchQueue.main.async {
-                    completion(false, error)
+                do {
+                    // try decoding into error response
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: newData)
+                    DispatchQueue.main.async {
+                        completion(false, error, errorResponse.message)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(false, error, nil)
+                    }
                 }
             }
-            
         }
         task.resume()
     }
