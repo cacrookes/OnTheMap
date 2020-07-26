@@ -44,7 +44,7 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = studentTableView.dequeueReusableCell(withIdentifier: "StudentTableViewCell")!
+        let cell = studentTableView.dequeueReusableCell(withIdentifier: K.identifiers.studentTableViewCell)!
     
         let student = StudentModel.studentList[indexPath.row]
         cell.imageView?.image = #imageLiteral(resourceName: "icon_pin")

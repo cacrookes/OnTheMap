@@ -9,7 +9,10 @@
 import Foundation
 
 struct K {
+    static let udacitySignUpURL = "https://auth.udacity.com/sign-up"
     struct identifiers {
         static let viewLocationViewController = "ViewLocationViewController"
+        static let studentTableViewCell = "StudentTableViewCell"
+        static let completeLoginSegue = "completeLogin"
     }
 }

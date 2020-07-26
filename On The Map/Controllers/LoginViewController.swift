@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func signupPressed(_ sender: Any) {
         // redirect the user to the sign up page on Udacity's website.
-        if let signupURL = URL(string: "https://auth.udacity.com/sign-up") {
+        if let signupURL = URL(string: K.udacitySignUpURL) {
             UIApplication.shared.open(signupURL)
         }
     }
@@ -52,8 +52,9 @@ class LoginViewController: UIViewController {
     func handleLoginResponse(success: Bool, error: Error?) {
         setIsBusy(false)
         if success {
-            performSegue(withIdentifier: "completeLogin", sender: nil)
+            performSegue(withIdentifier: K.identifiers.completeLoginSegue, sender: nil)
         } else {
+            // TODO: handle error
             //showLoginFailure(message: error?.localizedDescription ?? "")
         }
     }
