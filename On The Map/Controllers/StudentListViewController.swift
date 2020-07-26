@@ -34,8 +34,7 @@ class StudentListViewController: UIViewController {
             if success {
                 self.dismiss(animated: true, completion: nil)
             } else {
-                print("Error: \(String(describing: error))")
-                // TODO: raise alert
+                self.showAlert(message: "Unable to logout.")
             }
         })
     }
@@ -43,8 +42,21 @@ class StudentListViewController: UIViewController {
     // Grabs the 100 most recent student locations and adds them to the table view.
     func populateList(){
         OTMClient.getStudentList(numStudents: 100) { (students, error) in
-            StudentModel.studentList = students
+            if error != nil {
+                self.showAlert(message: "Unable to download student locations. Please try again later.")
+            } else {
+                StudentModel.studentList = students
+            }
         }
+    }
+    
+    /// Show an alert to the user
+    ///
+    /// - Parameter message: The message to display to the user in the alert.
+    func showAlert(message: String){
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
 
 }
