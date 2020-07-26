@@ -11,7 +11,6 @@ import CoreLocation
 
 class EnterLocationViewController: UIViewController {
 
-    
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var mediaURLTextField: UITextField!
     @IBOutlet weak var findLocationButton: UIButton!
@@ -19,10 +18,8 @@ class EnterLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
-
     @IBAction func findLocationClicked(_ sender: Any) {
         
         let mediaURL = mediaURLTextField.text ?? ""
@@ -60,7 +57,6 @@ class EnterLocationViewController: UIViewController {
         }
     }
     
-    
     @IBAction func cancelClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -91,6 +87,5 @@ class EnterLocationViewController: UIViewController {
         }))
         self.present(alertVC, animated: true, completion: nil)
     }
-    
     
 }

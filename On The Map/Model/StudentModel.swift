@@ -9,7 +9,5 @@
 import Foundation
 
 class StudentModel {
-    
     static var studentList = [StudentInformation]()
-
 }

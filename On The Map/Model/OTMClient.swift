@@ -67,7 +67,6 @@ class OTMClient {
         return task
     }
     
-    
     class func getStudentList(numStudents limit: Int, completion: @escaping ([StudentInformation], Error?) -> Void) {
         _ = taskForGETRequest(url: Endpoints.getStudentLocations(limit).url, responseType: StudentResults.self) { response, error in
             if let response = response {
