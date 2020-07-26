@@ -16,6 +16,14 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        populateMap()
+    }
+    
+    /// Get the 100 most recent student locations and add pins for each student on the map.
+    func populateMap(){
         // load 100 most recent students in studentList array
         OTMClient.getStudentList(numStudents: 100) { (students, error) in
             StudentModel.studentList = students
@@ -25,9 +33,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
             let studentLocations = StudentModel.studentList.map() {StudentLocation(student: $0)}
             self.mapView.addAnnotations(studentLocations)
         }
-        
     }
-    
 
     // MARK: - MKMapViewDelegate methods
     
