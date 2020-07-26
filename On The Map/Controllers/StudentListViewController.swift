@@ -29,6 +29,17 @@ class StudentListViewController: UIViewController {
         studentTableView.reloadData()
     }
     
+    @IBAction func logoutPressed(_ sender: Any) {
+        _ = OTMClient.logout(completion: { (success, error) in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                print("Error: \(String(describing: error))")
+                // TODO: raise alert
+            }
+        })
+    }
+    
     // Grabs the 100 most recent student locations and adds them to the table view.
     func populateList(){
         OTMClient.getStudentList(numStudents: 100) { (students, error) in

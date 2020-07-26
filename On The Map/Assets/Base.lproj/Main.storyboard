@@ -161,7 +161,16 @@
                         <viewLayoutGuide key="safeArea" id="Ncl-al-H9L"/>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="iIc-cS-oYV">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="FUM-QL-VTg"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="gfa-WW-9Hh">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="is8-UQ-Iqw">
+                                <rect key="frame" x="20" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="LOGOUT"/>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="U9m-fk-Zxq" eventType="touchUpInside" id="4hq-VZ-4Uj"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Item" image="icon_addpin" id="86e-iL-sPw">
                                 <connections>
@@ -446,7 +455,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Dr-Kk-Bvf"/>
+        <segue reference="XPZ-Gg-Ilk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>
