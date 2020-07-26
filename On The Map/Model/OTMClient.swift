@@ -19,6 +19,7 @@ class OTMClient {
         
         case getStudentLocations(Int)
         case login
+        case postStudentLocation
         
         var stringValue: String {
             switch self {
@@ -26,6 +27,8 @@ class OTMClient {
                 return Endpoints.base + "/StudentLocation?order=-updatedAt&limit=\(limit)"
             case .login:
                 return Endpoints.base + "/session"
+            case .postStudentLocation:
+                return Endpoints.base + "/StudentLocation"
             }
         }
         
@@ -103,8 +106,25 @@ class OTMClient {
             
         }
         task.resume()
-        
-
+    }
+    
+    class func postStudentLocation(studentLocation: PostLocationRequest, completion: @escaping (Bool, Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.postStudentLocation.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try! JSONEncoder().encode(studentLocation)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+            } else {
+               DispatchQueue.main.async {
+                    completion(true, nil)
+                }
+            }
+        }
+        task.resume()
     }
     
 }
