@@ -31,8 +31,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
             if success {
                 self.dismiss(animated: true, completion: nil)
             } else {
-                print("Error: \(String(describing: error))")
-                // TODO: raise alert
+                self.showAlert(message: "Unable to logout.")
             }
         })
     }
@@ -41,15 +40,28 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     func populateMap(){
         // load 100 most recent students in studentList array
         OTMClient.getStudentList(numStudents: 100) { (students, error) in
-            StudentModel.studentList = students
-            
-            // transform the list of students returned by API to array of StudentLocations,
-            // which conforms to MKAnnotation Protocol
-            let studentLocations = StudentModel.studentList.map() {StudentLocation(student: $0)}
-            self.mapView.addAnnotations(studentLocations)
+            if error != nil {
+                self.showAlert(message: "Unable to download student locations. Please try again later.")
+            } else {
+                StudentModel.studentList = students
+                
+                // transform the list of students returned by API to array of StudentLocations,
+                // which conforms to MKAnnotation Protocol
+                let studentLocations = StudentModel.studentList.map() {StudentLocation(student: $0)}
+                self.mapView.addAnnotations(studentLocations)
+            }
         }
     }
 
+    /// Show an alert to the user
+    ///
+    /// - Parameter message: The message to display to the user in the alert.
+    func showAlert(message: String){
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
     // MARK: - MKMapViewDelegate methods
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
