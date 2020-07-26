@@ -14,5 +14,6 @@ struct K {
         static let viewLocationViewController = "ViewLocationViewController"
         static let studentTableViewCell = "StudentTableViewCell"
         static let completeLoginSegue = "completeLogin"
+        static let loginViewController = "LoginViewController"
     }
 }
