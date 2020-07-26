@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         }
         
         setIsBusy(true)
-        _ = OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:))
+        _ = OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:message:))
     }
     
     
@@ -60,12 +60,13 @@ class LoginViewController: UIViewController {
         signupButton.isEnabled = !isBusy
     }
     
-    func handleLoginResponse(success: Bool, error: Error?) {
+    func handleLoginResponse(success: Bool, error: Error?, message: String?) {
         setIsBusy(false)
         if success {
             performSegue(withIdentifier: K.identifiers.completeLoginSegue, sender: nil)
         } else {
-            showAlert(message: "Unable to login", firstResponder: emailTextField)
+            let alertMessage = message ?? "Connection Error"
+            showAlert(message: alertMessage, firstResponder: emailTextField)
         }
     }
     
