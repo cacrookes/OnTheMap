@@ -21,6 +21,7 @@ class OTMClient {
         case getStudentLocations(Int)
         case login
         case postStudentLocation
+        case logout
         
         var stringValue: String {
             switch self {
@@ -30,6 +31,8 @@ class OTMClient {
                 return Endpoints.base + "/session"
             case .postStudentLocation:
                 return Endpoints.base + "/StudentLocation"
+            case .logout:
+                return Endpoints.base + "/session"
             }
         }
         
@@ -106,6 +109,32 @@ class OTMClient {
                 }
             }
             
+        }
+        task.resume()
+    }
+    
+    class func logout(completion: @escaping (Bool, Error?) -> Void) {
+        var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/session")!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+            if error != nil {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+            } else {
+                // successfully logged out, so reset session and user ids.
+                Auth.sessionId = ""
+                Auth.userId = ""
+            }
         }
         task.resume()
     }
