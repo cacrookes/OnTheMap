@@ -12,6 +12,7 @@ class OTMClient {
     
     struct Auth {
         static var sessionId = ""
+        static var userId = ""
     }
     
     enum Endpoints {
@@ -94,6 +95,7 @@ class OTMClient {
             do {
                 let loginResponse = try decoder.decode(LoginResponse.self, from: newData)
                 Auth.sessionId = loginResponse.session.id
+                Auth.userId = loginResponse.account.key
                 DispatchQueue.main.async {
                     completion(true, nil)
                 }
