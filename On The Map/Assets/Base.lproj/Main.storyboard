@@ -168,7 +168,16 @@
                                     <segue destination="Qb4-Yl-PX3" kind="presentation" modalPresentationStyle="fullScreen" id="XPZ-Gg-Ilk"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="icon_refresh" id="YBa-P2-8xq"/>
+                            <barButtonItem style="plain" id="MGC-RM-A9y">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I0u-Lg-fUf">
+                                    <rect key="frame" x="327" y="10" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="icon_refresh"/>
+                                    <connections>
+                                        <action selector="refreshClicked:" destination="U9m-fk-Zxq" eventType="touchUpInside" id="ozk-kZ-SzH"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -333,7 +342,7 @@
                             </barButtonItem>
                             <barButtonItem title="Item" style="plain" id="6Rm-ve-SEW">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YcZ-Id-2Qz">
-                                    <rect key="frame" x="273" y="10" width="78" height="24"/>
+                                    <rect key="frame" x="273" y="10" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="icon_refresh"/>
                                     <connections>
@@ -428,7 +437,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Dr-Kk-Bvf"/>
+        <segue reference="XPZ-Gg-Ilk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>

@@ -17,10 +17,14 @@ class StudentListViewController: UIViewController {
 
         studentTableView.delegate = self
         studentTableView.dataSource = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        populateList()
+        studentTableView.reloadData()
+    }
+    
+    @IBAction func refreshClicked(_ sender: Any) {
         populateList()
         studentTableView.reloadData()
     }
@@ -49,6 +53,5 @@ extension StudentListViewController: UITableViewDataSource, UITableViewDelegate 
         
         return cell
     }
-    
     
 }
