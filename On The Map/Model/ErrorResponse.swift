@@ -10,5 +10,10 @@ import Foundation
 
 struct ErrorResponse: Codable {
     let status: Int
-    let error: String
+    let message: String
+    
+    enum CodingKeys: String, CodingKey {
+        case status
+        case message = "error"
+    }
 }
