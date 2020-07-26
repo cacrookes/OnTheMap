@@ -23,6 +23,17 @@ class LoginViewController: UIViewController {
     @IBAction func loginPressed(_ sender: Any) {
         let username: String = emailTextField.text ?? ""
         let password: String = passwordTextField.text ?? ""
+        
+        if username == "" {
+            showAlert(message: "Please enter your email.", firstResponder: emailTextField)
+            return
+        }
+        if password == "" {
+            showAlert(message: "Please enter your password", firstResponder: passwordTextField)
+            return
+        }
+        
+        setIsBusy(true)
         _ = OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:))
     }
     
@@ -54,9 +65,21 @@ class LoginViewController: UIViewController {
         if success {
             performSegue(withIdentifier: K.identifiers.completeLoginSegue, sender: nil)
         } else {
-            // TODO: handle error
-            //showLoginFailure(message: error?.localizedDescription ?? "")
+            showAlert(message: "Unable to login", firstResponder: emailTextField)
         }
+    }
+    
+    /// Show an alert to the user
+    ///
+    /// - Parameters:
+    ///   - message: The message to display to the user in the alert.
+    ///   - firstResponder: The textfield that should receive the focus after the alert is closed.
+    func showAlert(message: String, firstResponder: UITextField){
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            firstResponder.becomeFirstResponder()
+        }))
+        self.present(alertVC, animated: true, completion: nil)
     }
 }
 
