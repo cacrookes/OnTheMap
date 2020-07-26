@@ -134,6 +134,9 @@ class OTMClient {
                 // successfully logged out, so reset session and user ids.
                 Auth.sessionId = ""
                 Auth.userId = ""
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
             }
         }
         task.resume()
