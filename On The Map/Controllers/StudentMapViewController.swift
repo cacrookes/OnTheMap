@@ -11,17 +11,19 @@ import MapKit
 
 class StudentMapViewController: UIViewController, MKMapViewDelegate {
 
+    // MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
     
+    // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         populateMap()
     }
     
+    // MARK: - IBActions
     @IBAction func refreshClicked(_ sender: Any) {
         populateMap()
     }
@@ -36,6 +38,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         })
     }
     
+    // MARK: - Helper functions
     /// Get the 100 most recent student locations and add pins for each student on the map.
     func populateMap(){
         // load 100 most recent students in studentList array
@@ -87,7 +90,6 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        // TODO: handle errors
         if control == view.rightCalloutAccessoryView {
             if let mediaURL = URL(string: (view.annotation?.subtitle)!!) {
                 UIApplication.shared.open(mediaURL)
