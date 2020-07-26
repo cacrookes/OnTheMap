@@ -15,7 +15,7 @@ class EnterLocationViewController: UIViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var mediaURLTextField: UITextField!
     @IBOutlet weak var findLocationButton: UIButton!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,7 @@ class EnterLocationViewController: UIViewController {
     
 
     @IBAction func findLocationClicked(_ sender: Any) {
+        
         let mediaURL = mediaURLTextField.text ?? ""
         let location = locationTextField.text ?? ""
         
@@ -37,8 +38,9 @@ class EnterLocationViewController: UIViewController {
         }
         
         let geocoder = CLGeocoder()
-        
+        setIsBusy(true)
         geocoder.geocodeAddressString(location) { (placemarks, error) in
+            self.setIsBusy(false)
             if error != nil {
                 self.showAlert(message: "Could not find location", firstResponder: self.locationTextField)
                 return
@@ -61,6 +63,20 @@ class EnterLocationViewController: UIViewController {
     
     @IBAction func cancelClicked(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    /// Sets the app to busy mode. Enables activityIndicator and disables buttons and text fields
+    ///
+    /// - Parameter isBusy: a boolean indicating if the app is busy or not.
+    func setIsBusy(_ isBusy: Bool) {
+        if isBusy {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        locationTextField.isEnabled = !isBusy
+        mediaURLTextField.isEnabled = !isBusy
+        findLocationButton.isEnabled = !isBusy
     }
     
     /// Show an alert to the user

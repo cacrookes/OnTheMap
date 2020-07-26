@@ -13,6 +13,8 @@
 		3382270B24CCEEB100004863 /* ViewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382270A24CCEEB100004863 /* ViewLocationViewController.swift */; };
 		3382270D24CCF34500004863 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382270C24CCF34500004863 /* Constants.swift */; };
 		3382270F24CD076E00004863 /* PostLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382270E24CD076E00004863 /* PostLocationRequest.swift */; };
+		3382271124CD3F7600004863 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382271024CD3F7600004863 /* ErrorResponse.swift */; };
+		3382271324CD457A00004863 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3382271224CD457A00004863 /* LoginError.swift */; };
 		33A6125F24CA2B5800BEE9EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A6125E24CA2B5800BEE9EA /* AppDelegate.swift */; };
 		33A6126124CA2B5800BEE9EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A6126024CA2B5800BEE9EA /* SceneDelegate.swift */; };
 		33A6126324CA2B5800BEE9EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A6126224CA2B5800BEE9EA /* LoginViewController.swift */; };
@@ -35,6 +37,8 @@
 		3382270A24CCEEB100004863 /* ViewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLocationViewController.swift; sourceTree = "<group>"; };
 		3382270C24CCF34500004863 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3382270E24CD076E00004863 /* PostLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationRequest.swift; sourceTree = "<group>"; };
+		3382271024CD3F7600004863 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		3382271224CD457A00004863 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		33A6125B24CA2B5800BEE9EA /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A6125E24CA2B5800BEE9EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33A6126024CA2B5800BEE9EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 				3312C91624CBEE5900728946 /* LoginRequest.swift */,
 				3312C91824CBF17D00728946 /* LoginResponse.swift */,
 				3382270E24CD076E00004863 /* PostLocationRequest.swift */,
+				3382271024CD3F7600004863 /* ErrorResponse.swift */,
+				3382271224CD457A00004863 /* LoginError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +214,8 @@
 				3382270B24CCEEB100004863 /* ViewLocationViewController.swift in Sources */,
 				3382270D24CCF34500004863 /* Constants.swift in Sources */,
 				33D5D8AC24CA6EB300ADB881 /* StudentInformation.swift in Sources */,
+				3382271124CD3F7600004863 /* ErrorResponse.swift in Sources */,
+				3382271324CD457A00004863 /* LoginError.swift in Sources */,
 				33A6126324CA2B5800BEE9EA /* LoginViewController.swift in Sources */,
 				33D5D8AE24CA755F00ADB881 /* OTMClient.swift in Sources */,
 				33A6125F24CA2B5800BEE9EA /* AppDelegate.swift in Sources */,
