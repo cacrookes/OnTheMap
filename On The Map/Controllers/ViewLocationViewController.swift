@@ -11,14 +11,36 @@ import MapKit
 
 class ViewLocationViewController: UIViewController {
 
+    var coordinates: CLLocationCoordinate2D?
+    var pinTitle: String?
+    var mediaURL: String?
+    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupMap()
+                
     }
     
     @IBAction func finishClicked(_ sender: Any) {
     }
+    
+    func setupMap(){
+        let location = MKPointAnnotation()
+        guard let coordinates = self.coordinates else {
+            return
+        }
+        location.coordinate = coordinates
+        location.title = self.pinTitle
+        self.mapView.addAnnotation(location)
+        
+        // center map around pin, based on code found here:
+        // https://stackoverflow.com/a/41640054
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegion(center: coordinates,
+                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
 }

@@ -47,7 +47,14 @@ class EnterLocationViewController: UIViewController {
                 self.showAlert(message: "Unable to extract location information", firstResponder: self.locationTextField)
                 return
             }
+            // pass values to the ViewLocation controller to display location on a map.
+            let controller = self.storyboard?.instantiateViewController(identifier: K.identifiers.viewLocationViewController) as! ViewLocationViewController
             
+            controller.coordinates = coordinates
+            controller.mediaURL = mediaURL
+            controller.pinTitle = placemarks?.first?.name ?? ""
+            
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
     
