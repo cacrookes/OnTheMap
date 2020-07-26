@@ -26,6 +26,17 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         populateMap()
     }
     
+    @IBAction func logoutPressed(_ sender: Any) {
+        _ = OTMClient.logout(completion: { (success, error) in
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                print("Error: \(String(describing: error))")
+                // TODO: raise alert
+            }
+        })
+    }
+    
     /// Get the 100 most recent student locations and add pins for each student on the map.
     func populateMap(){
         // load 100 most recent students in studentList array
