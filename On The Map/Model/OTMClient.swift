@@ -104,7 +104,9 @@ class OTMClient {
                 }
             } catch {
                 do {
-                    // try decoding into error response
+                    // If there was a creditials validation error, try decoder.decode(LoginResponse.self, from: newData)
+                    // will fail since the returned JSON won't match LoginResponse.
+                    // So try decoding the JSON into ErrorResponse instead.
                     let errorResponse = try decoder.decode(ErrorResponse.self, from: newData)
                     DispatchQueue.main.async {
                         completion(false, error, errorResponse.message)
