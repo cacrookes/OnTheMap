@@ -122,7 +122,7 @@ class OTMClient {
     }
     
     class func logout(completion: @escaping (Bool, Error?) -> Void) {
-        var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/session")!)
+        var request = URLRequest(url: Endpoints.logout.url)
         request.httpMethod = "DELETE"
         var xsrfCookie: HTTPCookie? = nil
         let sharedCookieStorage = HTTPCookieStorage.shared
