@@ -29,7 +29,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logoutPressed(_ sender: Any) {
-        _ = OTMClient.logout(completion: { (success, error) in
+        OTMClient.logout(completion: { (success, error) in
             if success {
                 self.dismiss(animated: true, completion: nil)
             } else {

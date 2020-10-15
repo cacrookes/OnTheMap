@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         }
         
         setIsBusy(true)
-        _ = OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:message:))
+        OTMClient.login(username: username, password: password, completion: handleLoginResponse(success:error:message:))
     }
     
     

@@ -33,7 +33,7 @@ class ViewLocationViewController: UIViewController {
                                                mediaURL: mediaURL!,
                                                latitude: coordinates!.latitude,
                                                longitude: coordinates!.longitude)
-        _ = OTMClient.postStudentLocation(studentLocation: postLocation, completion: handlePostLocationResponse(success:error:))
+        OTMClient.postStudentLocation(studentLocation: postLocation, completion: handlePostLocationResponse(success:error:))
     }
     
     func setupMap(){
