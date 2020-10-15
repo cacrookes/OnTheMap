@@ -34,6 +34,7 @@
 		3312C91624CBEE5900728946 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		3312C91824CBF17D00728946 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		3339F75924CCBD8B0033E82F /* EnterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterLocationViewController.swift; sourceTree = "<group>"; };
+		333C26A32537F273002C9EB1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3382270A24CCEEB100004863 /* ViewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewLocationViewController.swift; sourceTree = "<group>"; };
 		3382270C24CCF34500004863 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3382270E24CD076E00004863 /* PostLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationRequest.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		33A6125224CA2B5800BEE9EA = {
 			isa = PBXGroup;
 			children = (
+				333C26A32537F273002C9EB1 /* README.md */,
 				33A6125D24CA2B5800BEE9EA /* On The Map */,
 				33A6125C24CA2B5800BEE9EA /* Products */,
 			);
